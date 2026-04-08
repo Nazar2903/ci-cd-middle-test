@@ -32,3 +32,8 @@ class TaskManager:
         tasks.append(task)
         self._save_tasks(tasks)
         return task_id
+    
+    def delete_task(self, task_id):
+        tasks = self._load_tasks()
+        tasks = [t for t in tasks if t["id"] != task_id]
+        self._save_tasks(tasks)
