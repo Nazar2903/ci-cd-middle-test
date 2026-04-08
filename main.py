@@ -37,3 +37,11 @@ class TaskManager:
         tasks = self._load_tasks()
         tasks = [t for t in tasks if t["id"] != task_id]
         self._save_tasks(tasks)
+        
+    def list_tasks(self, sort_by="priority"):
+        tasks = self._load_tasks()
+        if sort_by == "priority":
+            tasks.sort(key=lambda x: x["priority"])
+        elif sort_by == "date":
+            tasks.sort(key=lambda x: x["date"])
+        return tasks
