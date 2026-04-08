@@ -2,17 +2,16 @@ import pytest
 import os
 from main import TaskManager
 
-# Фікстура для створення тимчасового файлу БД для тестів
+# Fixture for creating a temporary database file for tests
 @pytest.fixture
 def setup_manager():
     test_file = "test_tasks.txt"
     manager = TaskManager(test_file)
     yield manager
-    # Очищення після виконання тесту
     if os.path.exists(test_file):
         os.remove(test_file)
 
-# Параметризація для тестування різних варіантів завдань
+# Parameterization for testing different task variants
 @pytest.mark.parametrize("desc, date, priority", [
     ("Write code", "2026-04-10", 1),
     ("Review PR", "2026-04-11", 3),
