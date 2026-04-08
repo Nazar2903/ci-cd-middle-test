@@ -19,3 +19,16 @@ class TaskManager:
     def _save_tasks(self, tasks):
         with open(self.filename, 'w') as f:
             json.dump(tasks, f, indent=4)
+            
+    def add_task(self, description, date, priority):
+        tasks = self._load_tasks()
+        task_id = str(uuid.uuid4())[:8]
+        task = {
+            "id": task_id,
+            "description": description,
+            "date": date,
+            "priority": priority
+        }
+        tasks.append(task)
+        self._save_tasks(tasks)
+        return task_id
