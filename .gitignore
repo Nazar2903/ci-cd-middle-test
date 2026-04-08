@@ -3,6 +3,7 @@
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
+report.html
 __pycache__/
 *.py[cod]
 *$py.class
